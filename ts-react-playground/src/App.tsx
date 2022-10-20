@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-
 // routers
 import { Routes, Route } from "react-router-dom";
 
