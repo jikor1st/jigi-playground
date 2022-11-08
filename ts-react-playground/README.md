@@ -1,3 +1,3 @@
-# ts-react-playground
+## react-roter-dom
 
-타입스크립트 기반 리엑트 테스트 플레이그라운드
+history api를 기반으로 path별 컴포넌트를 관리하기 용이하도록 react-router-dom 라이브러리 사용
