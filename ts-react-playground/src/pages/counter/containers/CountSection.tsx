@@ -10,6 +10,7 @@ const CountSection = () => {
       <strong>{count}</strong>
       <button onClick={startCountDown}>start count down</button>
       <button onClick={resetCountDown}>reset count down</button>
+      <p>test</p>
     </div>
   );
 };

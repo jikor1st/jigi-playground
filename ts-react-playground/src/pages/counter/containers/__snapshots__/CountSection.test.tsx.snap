@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CountSection/> 스냅샷 매칭 1`] = `
+<div>
+  <div>
+    <strong>
+      100
+    </strong>
+    <button>
+      start count down
+    </button>
+    <button>
+      reset count down
+    </button>
+    <p>
+      test
+    </p>
+  </div>
+</div>
+`;
