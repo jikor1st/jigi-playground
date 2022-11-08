@@ -7,7 +7,7 @@ const CountSection = () => {
   });
   return (
     <div>
-      <strong>{count}</strong>
+      <strong data-testid="test-count">{count}</strong>
       <button onClick={startCountDown}>start count down</button>
       <button onClick={resetCountDown}>reset count down</button>
       <p>test</p>

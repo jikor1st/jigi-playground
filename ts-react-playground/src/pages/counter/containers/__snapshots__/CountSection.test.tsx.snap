@@ -3,7 +3,9 @@
 exports[`<CountSection/> 스냅샷 매칭 1`] = `
 <div>
   <div>
-    <strong>
+    <strong
+      data-testid="test-count"
+    >
       100
     </strong>
     <button>
