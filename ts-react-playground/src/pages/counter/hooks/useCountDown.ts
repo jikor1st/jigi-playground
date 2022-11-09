@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import useCounter from "./useCounter";
 import useInterval from "./useInterval";
 
-interface UseCountDownOptions {
+export interface UseCountDownOptions {
   countStart: number;
   intervalMS: number;
   countStop?: number;

@@ -1,22 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-
-import useCountDown from "../hooks/useCountDown";
-import useIntersectionObserver from "../hooks/useIntersectionObserver";
 
 import Fade from "../components/Fade";
 import TestComponent from "../components/TestComponent";
 
 const CountIntersection = () => {
-  const { count, startCountDown, resetCountDown } = useCountDown({
-    countStart: 100,
-    countStop: 102,
-    intervalMS: 1000,
-  });
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <Container>
-      <Fade threshold={0.3} translateY={"30px"} freezeOnceVisible>
-        <TestComponent />
+      <Fade
+        threshold={0.5}
+        translateY={"30px"}
+        freezeOnceVisible={true}
+        onChangeEntry={(entry) => {
+          const isVisible = !!entry?.isIntersecting;
+          setIsVisible((prev) => (prev !== isVisible ? isVisible : prev));
+        }}
+      >
+        <TestComponent isVisible={isVisible} />
       </Fade>
     </Container>
   );

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 
 import useIntersectionObserver, {
@@ -11,13 +11,16 @@ interface FadeOptions {
   timingFunction?: string;
 }
 
-interface FadeProps extends IOOptions, FadeOptions {}
+interface FadeProps extends IOOptions, FadeOptions {
+  onChangeEntry: (entry: IntersectionObserverEntry) => void;
+}
 
 const Fade: React.FC<React.PropsWithChildren<FadeProps>> = ({
   children,
   translateY,
   duration,
   timingFunction,
+  onChangeEntry,
   ...iOOptions
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -26,6 +29,11 @@ const Fade: React.FC<React.PropsWithChildren<FadeProps>> = ({
   const isVisible = !!entry?.isIntersecting;
 
   const fadeOptions = { translateY, duration, timingFunction };
+
+  useEffect(() => {
+    if (!entry) return;
+    onChangeEntry(entry);
+  }, [entry]);
   return (
     <Container ref={containerRef} fadeIn={isVisible} {...fadeOptions}>
       {children}
