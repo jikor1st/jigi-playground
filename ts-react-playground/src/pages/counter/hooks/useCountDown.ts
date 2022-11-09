@@ -32,7 +32,7 @@ const useCountDown = ({
       return;
     }
 
-    if (!isIncrease) {
+    if (isIncrease) {
       increase();
     } else {
       decrease();
