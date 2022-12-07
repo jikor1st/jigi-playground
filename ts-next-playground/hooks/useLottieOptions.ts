@@ -1,5 +1,4 @@
-import { ComponentProps, useState } from "react";
-import { LottieProps } from "react-lottie";
+import { useState } from "react";
 
 interface LottieOptions {
   isStopped: boolean;
@@ -18,14 +17,6 @@ const DEFAULT_OPTIONS: LottieOptions = {
   speed: 1,
   direction: 1,
 };
-
-/**
- *
- * @param initialOptions
- * @default options
- * { isStopped: false, isPaused: false, speed: 1, direction: 1 }
- * @returns lottieOptions, setLottieOptions
- */
 
 const useLottieOptions = (initialOptions?: Partial<LottieOptions>) => {
   const [lottieOptions, setLottieOptionsState] = useState({

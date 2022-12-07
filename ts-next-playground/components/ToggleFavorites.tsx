@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import Lottie from "react-lottie";
 
 import styled from "@emotion/styled";
-import useLottieOptions from "hooks/useLottieOptions";
+import useLottieOptions from "../hooks/useLottieOptions";
 import animationData from "../lotties/favorites.json";
 
 interface ToggleFavorites {
@@ -11,11 +11,10 @@ interface ToggleFavorites {
 }
 
 const ToggleFavorites = ({ isLike, onClick }: ToggleFavorites) => {
-  const isRunningRef = useRef(false);
   const { lottieOptions, setLottieOptions } = useLottieOptions({
     isStopped: true,
     isPaused: false,
-    speed: 2,
+    speed: 2.5,
     direction: 1,
   });
 
@@ -25,13 +24,7 @@ const ToggleFavorites = ({ isLike, onClick }: ToggleFavorites) => {
     animationData: animationData,
   };
 
-  const handleClickLike = () => {
-    if (isRunningRef.current) return;
-    onClick();
-  };
   const handleChangeLike = useCallback(() => {
-    isRunningRef.current = true;
-
     if (isLike) {
       setLottieOptions({ direction: 1 });
     } else {
@@ -40,16 +33,12 @@ const ToggleFavorites = ({ isLike, onClick }: ToggleFavorites) => {
     setLottieOptions({ isStopped: false });
   }, [isLike]);
 
-  const handleComplete = () => {
-    isRunningRef.current = false;
-  };
-
   useEffect(() => {
     handleChangeLike();
   }, [isLike]);
 
   return (
-    <LikeButton onClick={handleClickLike}>
+    <LikeButton onClick={onClick}>
       <Lottie
         options={defaultOptions}
         width={100}
@@ -58,14 +47,6 @@ const ToggleFavorites = ({ isLike, onClick }: ToggleFavorites) => {
         isPaused={lottieOptions.isPaused}
         speed={lottieOptions.speed}
         direction={lottieOptions.direction}
-        eventListeners={[
-          {
-            eventName: "complete",
-            callback() {
-              handleComplete();
-            },
-          },
-        ]}
       />
     </LikeButton>
   );
